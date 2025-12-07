@@ -59,14 +59,16 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="flex justify-center mb-8"
           >
-            <Image
-              src="/hero-image.png"
-              alt="Technical Interview"
-              width={800}
-              height={600}
-              className="rounded-lg shadow-2xl"
-              priority
-            />
+            <div className="relative w-full max-w-4xl aspect-[4/3]">
+              <Image
+                src="/hero-image.png"
+                alt="Technical Interview"
+                fill
+                className="rounded-lg shadow-2xl object-contain"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              />
+            </div>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
