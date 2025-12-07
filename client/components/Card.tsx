@@ -40,6 +40,7 @@ export default function Card({ card, currentUserId }: CardProps) {
     const [isLoading, setIsLoading] = useState(false);
     const [isCheckingMatch, setIsCheckingMatch] = useState(true);
     const [showMutualMatchDialog, setShowMutualMatchDialog] = useState(false);
+    const [showAuthDialog, setShowAuthDialog] = useState(false);
     const [userCards, setUserCards] = useState<any[]>([]);
     const [userInfo, setUserInfo] = useState<{ status?: string; matchCount?: number } | null>(null);
 
@@ -91,7 +92,13 @@ export default function Card({ card, currentUserId }: CardProps) {
     }, [currentUserId, card.id, isOwnCard]);
 
     const handleRequestMatch = () => {
-        if (match || !currentUserId) return;
+        if (match) return;
+        
+        // Если пользователь не авторизован, показываем диалог авторизации
+        if (!currentUserId) {
+            setShowAuthDialog(true);
+            return;
+        }
         
         // Проверяем лимит для Free пользователей
         if (userInfo?.status === 'free' && userInfo.matchCount !== undefined && userInfo.matchCount >= FREE_PLAN_MATCH_LIMIT) {
@@ -211,6 +218,35 @@ export default function Card({ card, currentUserId }: CardProps) {
                 <Button size="sm" onClick={handleRequestMatch} disabled={isLoading}>
                     {isLoading ? 'Sending...' : 'Request Match'}
                 </Button>
+                <Dialog open={showAuthDialog} onOpenChange={setShowAuthDialog}>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle className="flex items-center gap-2">
+                                <AlertCircle className="w-5 h-5" />
+                                Authentication Required
+                            </DialogTitle>
+                            <DialogDescription>
+                                You need to sign in or register to request a match.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="space-y-4 py-4">
+                            <p className="text-sm text-muted-foreground">
+                                To request a match with <span className="font-medium">{card.owner.name}</span>, 
+                                please sign in to your account or create a new one.
+                            </p>
+                        </div>
+                        <DialogFooter>
+                            <Button variant="outline" onClick={() => setShowAuthDialog(false)}>
+                                Cancel
+                            </Button>
+                            <Link href="/auth" className="inline-block">
+                                <Button onClick={() => setShowAuthDialog(false)}>
+                                    Sign In / Register
+                                </Button>
+                            </Link>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
                 <Dialog open={showMutualMatchDialog} onOpenChange={setShowMutualMatchDialog}>
                     <DialogContent>
                         <DialogHeader>

@@ -7,6 +7,7 @@ import CardFilters from '@/components/CardFilters';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Home() {
   const [cards, setCards] = useState<any[]>([]);
@@ -53,9 +54,24 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       {!isAuthenticated && (
         <section className="py-20 text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center mb-8"
+          >
+            <Image
+              src="/hero-image.png"
+              alt="Technical Interview"
+              width={800}
+              height={600}
+              className="rounded-lg shadow-2xl"
+              priority
+            />
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
             className="text-5xl font-extrabold tracking-tight lg:text-6xl"
           >
             Master Your <span className="text-primary">Tech Interview</span>
@@ -63,7 +79,7 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2 }}
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
           >
             Join the community of developers practicing peer-to-peer mock interviews. Level up your skills today.
@@ -71,7 +87,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.3 }}
             className="flex justify-center gap-4"
           >
             <Link href="/auth">
