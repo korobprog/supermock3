@@ -1,0 +1,2 @@
+src/app.module.ts(7,10): error TS2300: Duplicate identifier 'UsersModule'.
+src/app.module.ts(8,10): error TS2300: Duplicate identifier 'UsersModule'.

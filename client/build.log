@@ -1,0 +1,37 @@
+   ▲ Next.js 16.0.7 (Turbopack)
+   - Environments: .env
+
+   Creating an optimized production build ...
+Error: Cannot apply unknown utility class `border-border`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:21:1314)][0m
+    [2m[at Te (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:16:36364)][0m
+    [2m[at /home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:21:355][0m
+    [2m[at Tr (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:3:1718)][0m
+    [2m[at _ (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:3:1377)][0m
+    [2m[at Se (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:21:172)][0m
+    [2m[at ln (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async sn (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/tailwindcss@4.1.17/node_modules/tailwindcss/dist/lib.js:38:631)][0m
+    [2m[at async Qr (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/@tailwindcss+node@4.1.17/node_modules/@tailwindcss/node/dist/index.js:10:3385)][0m
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /home/maxim/Documents/Supermock3/client/app/globals.css:1:1: Cannot apply unknown utility class `border-border`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at Input.error (node_modules/.pnpm/postcss@8.4.31/node_modules/postcss/lib/input.js:106:16) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/node_modules__pnpm_56ec7204._.js:4132:22]
+    at Root.error (node_modules/.pnpm/postcss@8.4.31/node_modules/postcss/lib/node.js:115:32) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/node_modules__pnpm_56ec7204._.js:895:38]
+    [at Object.Once (/home/maxim/Documents/Supermock3/client/node_modules/.pnpm/@tailwindcss+postcss@4.1.17/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:105:5)]
+    at async LazyResult.runAsync (node_modules/.pnpm/postcss@8.4.31/node_modules/postcss/lib/lazy-result.js:261:11) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/node_modules__pnpm_56ec7204._.js:6052:21]
+    at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/[root-of-the-server]__51225daf._.js:146:36]
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/[root-of-the-server]__974941ed._.js:443:31]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+    at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/[root-of-the-server]__51225daf._.js:146:36])
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [/home/maxim/Documents/Supermock3/client/.next/build/chunks/[root-of-the-server]__974941ed._.js:443:31])
